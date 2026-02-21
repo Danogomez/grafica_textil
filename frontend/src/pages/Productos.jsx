@@ -7,7 +7,7 @@ function Productos() {
   const [categoriaActiva, setCategoriaActiva] = useState('todos')
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/productos')
+    axios.get('https://grafica-textil-backend.onrender.com')
       .then(res => {
         setProductos(res.data)
         setCargando(false)

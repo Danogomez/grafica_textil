@@ -15,7 +15,7 @@ function Contacto() {
     e.preventDefault()
     setCargando(true)
     try {
-      await axios.post('http://localhost:3001/api/contacto', form)
+      await axios.post('https://grafica-textil-backend.onrender.com', form)
       setEnviado(true)
     } catch (err) {
       setError(true)
