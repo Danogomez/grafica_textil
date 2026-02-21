@@ -1,29 +1,32 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from "react-router-dom"
+import { useCarrito } from "../context/CarritoContext"
 
-function Navbar() {
-  const location = useLocation()
-
-  const linkClass = (path) =>
-    `transition-colors font-medium ${
-      location.pathname === path
-        ? 'text-white border-b-2 border-white pb-1'
-        : 'text-blue-200 hover:text-white'
-    }`
+export default function NavBar() {
+  const { cantidad } = useCarrito()
 
   return (
-    <nav className="bg-gradient-to-r from-blue-950 to-blue-800 px-10 py-5 flex justify-between items-center shadow-lg">
-      <Link to="/" className="flex items-center gap-3">
-        <div className="bg-white text-blue-900 font-black text-lg px-3 py-1 rounded-lg">GT</div>
-        <span className="text-white text-xl font-bold tracking-wide">Gráfica Textil</span>
-      </Link>
-      <div className="flex gap-10">
-        <Link to="/" className={linkClass('/')}>Inicio</Link>
-        <Link to="/productos" className={linkClass('/productos')}>Productos</Link>
-        <Link to="/contacto" className={linkClass('/contacto')}>Contacto</Link>
-        <Link to="/nosotros" className={linkClass('/nosotros')}>Nosotros</Link>
+    <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur border-b border-white/10">
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
+        <Link to="/" className="text-white font-light tracking-widest text-lg">
+          FOTOVEGA<span className="text-red-500">23</span>
+        </Link>
+
+        <div className="flex items-center gap-8 text-sm text-gray-400">
+          <Link to="/eventos" className="hover:text-white transition">Eventos</Link>
+          <Link to="/contacto" className="hover:text-white transition">Contacto</Link>
+
+          <Link to="/carrito" className="relative hover:text-white transition">
+            <span>🛒</span>
+            {cantidad > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">
+                {cantidad}
+              </span>
+            )}
+          </Link>
+        </div>
+
       </div>
     </nav>
   )
 }
-
-export default Navbar
