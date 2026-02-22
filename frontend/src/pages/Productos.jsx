@@ -41,7 +41,7 @@ function Productos() {
     <div>
       {/* Header */}
       <div className="bg-gradient-to-br from-blue-950 to-blue-800 text-white text-center py-20 px-8">
-        <p className="text-blue-300 uppercase tracking-widest text-sm mb-2 font-semibold">Lo que fabricamos</p>
+        <p className="text-blue-300 uppercase tracking-widest text-sm mb-2 font-semibold">Lo que fabricamos HOY</p>
         <h1 className="text-5xl font-black">Nuestros Productos</h1>
       </div>
 
